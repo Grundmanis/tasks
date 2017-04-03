@@ -17,4 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/dashboard', 'DashboardController@index');
+
+Route::get('/login/{service}', 'Auth\LoginController@redirectToProvider');
+Route::get('/login/{service}/callback', 'Auth\LoginController@handleProviderCallback');
