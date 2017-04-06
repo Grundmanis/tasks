@@ -13,8 +13,11 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('Users', require('./components/Users.vue'));
+
+Vue.http.headers.common['X-CSRF-TOKEN'] = window.Laravel.csrfToken;
 
 const app = new Vue({
     el: '#app'
 });
+  

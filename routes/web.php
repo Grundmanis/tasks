@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/dashboard', 'DashboardController@index');
-
+Route::get('/', 'DashboardController@home');
 Route::get('/login/{service}', 'Auth\LoginController@redirectToProvider');
 Route::get('/login/{service}/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/dashboard', 'DashboardController@index');
+});
+Route::resource('clients', 'ClientController');

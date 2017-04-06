@@ -63,8 +63,13 @@
                 margin-bottom: 30px;
             }
         </style>
+        <script>
+            window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+        ]) !!};
+        </script>
     </head>
-    <body>
+    <body style="overflow: hidden">
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -84,14 +89,11 @@
                 <div class="title m-b-md">
                     Free Task Manager
                 </div>
-
-                @if (session('user'))
-                    <div class="alert alert-success">
-                        {{ dump(session('user')) }}
-                    </div>
-                @endif
-
             </div>
         </div>
+        <script
+                src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                    crossorigin="anonymous"></script>
     </body>
 </html>
